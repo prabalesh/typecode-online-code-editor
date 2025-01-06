@@ -4,6 +4,16 @@ import axios from "axios";
 import { config } from "../config/config";
 import { executeProgramDtos } from "../dtos/executeProgram.dtos"
 
+export const getRuntimes = async (request: Request, response: Response) => {
+    const res = await axios.get(config.PISTON_URL + '/api/v2/runtimes');
+    const data = res.data;
+
+    response.json({
+        success: true,
+        runtimes: data
+    })
+}
+
 export const executeProgram = async (request: Request<{}, {}, executeProgramDtos>, response: Response) => {
     const {language, version, content, stdin} = request.body;
 
