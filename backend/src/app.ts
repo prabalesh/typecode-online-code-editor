@@ -10,7 +10,9 @@ app.use(
     cors({
         origin: [
             "http://localhost",
+            "http://localhost:3000",
             config.FRONTEND_URL,
+            `config.FRONTEND_URL:${3000}`,
             "http://localhost:5173",
         ],
         credentials: true,
