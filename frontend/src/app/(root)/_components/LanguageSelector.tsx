@@ -62,7 +62,7 @@ function LanguageSelector() {
                                   (lang) =>
                                       lang.language + lang.version ===
                                       language.language + language.version
-                              )?.language
+                              )?.label
                           } (${
                               runtimeLanguages.find(
                                   (lang) =>
@@ -119,7 +119,7 @@ function LanguageSelector() {
                                             }
                                         >
                                             <span className="flex-1 text-left group-hover:text-white transition-colors">
-                                                {lang.language} {lang.version}
+                                                {lang.label} {lang.version}
                                             </span>
 
                                             {language.language +

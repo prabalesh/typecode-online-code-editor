@@ -18,7 +18,8 @@ function EditorPanel() {
         const savedCode = localStorage.getItem(
             `editor-code-${language.language}`
         );
-        const newCode = savedCode || "Your code goes here";
+        const newCode =
+            savedCode || language.defaultCode || "Your code goes here";
         if (editor) editor.setValue(newCode);
     }, [language, editor]);
 
@@ -28,8 +29,7 @@ function EditorPanel() {
     }, [setFontSize]);
 
     const handleRefresh = () => {
-        console.log("Hey pressed me");
-        const defaultCode = "Your code goes here";
+        const defaultCode = language.defaultCode || "Your code goes here";
         if (editor) editor.setValue(defaultCode);
         localStorage.removeItem(`editor-code-${language.language}`);
     };
@@ -102,7 +102,7 @@ function EditorPanel() {
                 <div className="relative group rounded-xl overflow-hidden ring-1 ring-white/[0.05]">
                     <Editor
                         height="68vh"
-                        language={language.language}
+                        language={language.monacoLanguage || language.language}
                         onChange={handleEditorChange}
                         theme={theme}
                         beforeMount={defineMonacoThemes}

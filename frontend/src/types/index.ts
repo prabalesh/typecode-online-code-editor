@@ -3,6 +3,9 @@ import { Monaco } from "@monaco-editor/react";
 export interface RuntimeLanguage {
     language: string;
     version: string;
+    monacoLanguage?: string;
+    label?: string;
+    defaultCode?: string;
 }
 
 export interface Theme {
